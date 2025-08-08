@@ -46,39 +46,79 @@ class Onibus:
 class OnibusExecutivo(Onibus):
     def __init__(self, modelo, fabricante, numrodas, descricao):
         super().__init__(modelo, fabricante, numrodas, descricao, "Executivo")
-        self.__assentos_semi_leito = [0] * 48
-        self.__assentos_leito = [0] * 12
+        self.__assentos_semi_leito = [[0]*12,[0]*12,[0]*12,[0]*12]
+        self.__assentos_leito = [[0]*4,[0]*4,[0]*4]
+        ''' Visão do onsbino(pt de cima//semileito)
+                                [][][][][][][][][][][][]
+            Semi                [][][][][][][][][][][][]
+               --
+                Leito           [][][][][][][][][][][][]
+                                [][][][][][][][][][][][]
 
-    def get_assentos_semi_leito(self):
+            pt de baixo(Leito)
+                                [][][][]
+            Lei
+               to               [][][][]
+                                [][][][]
+
+        Visao lateral do onsbino
+
+                     _______________________________________
+                    /| [] [] [] [] [] [] [] [] [] [] [] [] |\    <-- 12x 4 assentos (top deck 
+                    /_|_____________________________________|_\
+                    |   ___________________________            |
+                    |  | [] [] [] []                 |         |  <-- 4x 3 fileiras assentos (bottom deck 
+                    |  |_____________________________|         |
+                    |__________________________________________|
+                    O                                        O
+
+        
+        '''
+    def get_assentos(self):
+        assentos = {
+            "Semi-Leito": self.__assentos_semi_leito,
+            "Leito": self.__assentos_leito
+        }
+        return assentos
+    
+    def get_assentos_semileito(self):
         return self.__assentos_semi_leito
 
     def set_assentos_semi_leito(self, qualAssento, tipoPassageiro):
         if tipoPassageiro == "Comum":
-            self.__assentos_semi_leito[qualAssento] = 1
+            self.__assentos_semi_leito[qualAssento] = 1 # 1 representa que o assento está ocupado por um passageiro comum
         else:
-            self.__assentos_semi_leito[qualAssento] = 2
+            self.__assentos_semi_leito[qualAssento] = 2 # 2 representa que o assento está ocupado por um passageiro leito
 
     def get_assentos_leito(self):
         return self.__assentos_leito
 
-    def set_assentos_leito(self, lista):
-        self.__assentos_leito = lista
+    def set_assentos_leito(self, qualAssento, tipoPassageiro):
+        if tipoPassageiro == "Comum":
+            self.__assentos_semi_leito[qualAssento] = 1 # mesma coisa do de cima
+        else:
+            self.__assentos_semi_leito[qualAssento] = 2 # mesma coisa do de cima
+
 
     def imprime(self):
         super().imprime()
         print("Assentos Semi-Leito ainda livres: ", len(self.__assentos_semi_leito))
         print("Assentos Leito ainda livres: ", len(self.__assentos_leito))
 
+
 class OnibusConvencional(Onibus):
     def __init__(self, modelo, fabricante, numrodas, descricao):
         super().__init__(modelo, fabricante, numrodas, descricao, "Convencional")
-        self.__assentos = [0] * 48
+        self.__assentos = [[0] * 12]*4
 
     def get_assentos(self):
         return self.__assentos
 
-    def set_assentos(self, lista):
-        self.__assentos = lista
+    def set_assentos(self, qualAssento, tipoPassageiro):
+        if tipoPassageiro == "Comum":
+            self.__assentos_semi_leito[qualAssento] = 1 # 1 representa que o assento está ocupado por um passageiro comum
+        else:
+            self.__assentos_semi_leito[qualAssento] = 2 # 2 representa que o assento está ocupado por um passageiro leito
 
     def imprime(self):
         super().imprime()

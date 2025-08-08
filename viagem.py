@@ -1,4 +1,4 @@
-from onibus import Onibus
+from onibus import Onibus, OnibusExecutivo, OnibusConvencional
 
 
 
@@ -11,7 +11,10 @@ class Viagens:
         self.hora = hora
         self.preco = preco
         self.tipoOnibus = tipoOnibus
-        self.assento = Onibus.get_assentos(tipoOnibus) ##retorna os assentos disponiveis ( uma lista de assentos )
+        if self.tipoOnibus == "Executivo":
+            self.assento = OnibusExecutivo.get_assentos()
+        else:
+            self.assento = OnibusConvencional.get_assentos()
 
     def get_id_viagem(self):
         return self.id_viagem
@@ -58,7 +61,10 @@ class Viagens:
     def set_tipoOnibus(self, tipoOnibus):
         self.tipoOnibus = tipoOnibus
         # Se trocar o tipo do ônibus, atualiza os assentos
-        self.assento = Onibus.get_assentos(tipoOnibus)
+        if tipoOnibus == "Executivo":
+            self.assento = OnibusExecutivo.get_assentos()
+        else:
+            self.assento = OnibusConvencional.get_assentos()
 
     ##Usar pra debuggar até porque quando a gente tiver o Hud não vai precisar imprimir nada no print
     def imprime(self):
