@@ -1,8 +1,6 @@
 from onibus import Onibus, OnibusExecutivo, OnibusConvencional
 
-
-
-class Viagens:
+class Viagem:
     def __init__(self, id_viagem, origem, destino, data, hora, preco, tipoOnibus, assento):
         self.id_viagem = id_viagem
         self.origem = origem
@@ -11,10 +9,6 @@ class Viagens:
         self.hora = hora
         self.preco = preco
         self.tipoOnibus = tipoOnibus
-        if self.tipoOnibus == "Executivo":
-            self.assento = OnibusExecutivo.get_assentos()
-        else:
-            self.assento = OnibusConvencional.get_assentos()
 
     def get_id_viagem(self):
         return self.id_viagem
