@@ -1,25 +1,20 @@
 from passageiro import Passageiro
+from viagem import Viagem
 import random
 class Passagem:
-    def __init__(self,saida,destino,passageiro,assento,preco):
-        self.__saida = saida
-        self.__destino = destino
+    def __init__(self,viagem,passageiro,assento):
+        self.__viagem = viagem
         self.__passageiro = passageiro
-        self.__bilhete = str(random.randint(100000,999999))
         self.__assento = assento
-        self.__preco = preco
+        self.__preco = self.gera_preco()
+        self.__bilhete = str(random.randint(100000,999999))
         
-    def get_saida(self):
-        return self.__saida
 
-    def set_saida(self, saida):
-        self.__saida = saida
+    def get_viagem(self):
+        return self.__viagem
 
-    def get_destino(self):
-        return self.__destino
-
-    def set_destino(self, destino):
-        self.__destino = destino
+    def set_viagem(self,viagem):
+        self.__viagem = viagem
 
     def get_passageiro(self):
         return self.__passageiro
@@ -39,8 +34,7 @@ class Passagem:
     def set_assento(self, assento):
         self.__assento = assento
 
-    def get_preco(self):
-        return self.__preco
+    def gera_preco(self):
+        return self.__viagem.get_preco()
+
     
-    def set_preco(self,preco):
-        self.__preco = preco

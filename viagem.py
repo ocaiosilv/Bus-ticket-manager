@@ -1,7 +1,7 @@
 from onibus import Onibus, OnibusExecutivo, OnibusConvencional
 
 class Viagem:
-    def __init__(self, id_viagem, origem, destino, data, hora, preco, tipoOnibus, assento):
+    def __init__(self, id_viagem, origem, destino, data, hora, preco, tipoOnibus):
         self.id_viagem = id_viagem
         self.origem = origem
         self.destino = destino

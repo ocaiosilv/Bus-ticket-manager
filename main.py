@@ -38,7 +38,7 @@ class InterfaceApp:
 
         tk.Label(self.frame_atual, text="Tela do Administrador", font=("Helvetica", 16)).pack(pady=10)
 
-        tk.Button(self.frame_atual, text="Adicionar Viagem").pack(pady=5, fill="x")
+        tk.Button(self.frame_atual, text="Adicionar Viagem", command=self.adicionar_viagem).pack(pady=5, fill="x")
         tk.Button(self.frame_atual, text="Editar Viagem").pack(pady=5, fill="x")
         tk.Button(self.frame_atual, text="Remover Viagem").pack(pady=5, fill="x")
 
@@ -68,6 +68,21 @@ class InterfaceApp:
 
         tk.Button(self.frame_atual, text="Voltar", command=self.mostrar_menu_principal).pack(pady=20)
 
+    def adicionar_viagem(self):
+        tk.Label(self.frame_atual, text="Origem:").pack(anchor="w")
+        entry_origem = tk.Entry(self.frame_atual)
+        entry_origem.pack(fill="x", pady=5)
+
+        tk.Label(self.frame_atual, text="Destino:").pack(anchor="w")
+        entry_destino = tk.Entry(self.frame_atual)
+        entry_destino.pack(fill="x", pady=5)
+        pass
+
+        def ok():
+                origem = entry_origem.get()
+                destino = entry_destino.get()
+
+        tk.Button(self.frame_atual, text="OK", command=ok).pack(pady=10)
 
 # --- Ponto de Entrada ---
 if __name__ == "__main__":
