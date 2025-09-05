@@ -1,74 +1,63 @@
-from onibus import Onibus, OnibusExecutivo, OnibusConvencional
+from onibus import Onibus
 
 class Viagem:
-    def __init__(self, id_viagem, origem, destino, data, hora, preco, tipoOnibus):
-        self.id_viagem = id_viagem
-        self.origem = origem
-        self.destino = destino
-        self.data = data
-        self.hora = hora
-        self.preco = preco
-        self.tipoOnibus = tipoOnibus
+    def __init__(self, id_viagem, origem, destino, dias_da_semana, hora, preco, onibus: Onibus):
+        self.__id_viagem = id_viagem
+        self.__origem = origem
+        self.__destino = destino
+        self.__dias_da_semana = dias_da_semana
+        self.__hora = hora
+        self.__preco = preco
+        self.__onibus = onibus
 
     def get_id_viagem(self):
-        return self.id_viagem
+        return self.__id_viagem
+
+    def set_id_viagem(self, id_viagem):
+        self.__id_viagem = id_viagem
 
     def get_origem(self):
-        return self.origem
-
-    def get_destino(self):
-        return self.destino
-
-    def get_data(self):
-        return self.data
-
-    def get_hora(self):
-        return self.hora
-
-    def get_preco(self):
-        return self.preco
-
-    def get_tipoOnibus(self):
-        return self.tipoOnibus
-
-    def get_assento(self):
-        return self.assento
-    
-    def set_id_viagem(self, id_viagem):
-        self.id_viagem = id_viagem
+        return self.__origem
 
     def set_origem(self, origem):
-        self.origem = origem
+        self.__origem = origem
+
+    def get_destino(self):
+        return self.__destino
 
     def set_destino(self, destino):
-        self.destino = destino
+        self.__destino = destino
 
-    def set_data(self, data):
-        self.data = data
+    def get_dias_da_semana(self):
+        return self.__dias_da_semana
+
+    def set_dias_da_semana(self, dias):
+        self.__dias_da_semana = dias
+
+    def get_hora(self):
+        return self.__hora
 
     def set_hora(self, hora):
-        self.hora = hora
+        self.__hora = hora
+
+    def get_preco(self):
+        return self.__preco
 
     def set_preco(self, preco):
-        self.preco = preco
+        self.__preco = preco
 
-    def set_tipoOnibus(self, tipoOnibus):
-        self.tipoOnibus = tipoOnibus
-        # Se trocar o tipo do ônibus, atualiza os assentos
-        if tipoOnibus == "Executivo":
-            self.assento = OnibusExecutivo.get_assentos()
-        else:
-            self.assento = OnibusConvencional.get_assentos()
+    def get_onibus(self):
+        return self.__onibus
 
-    ##Usar pra debuggar até porque quando a gente tiver o Hud não vai precisar imprimir nada no print
+    def set_onibus(self, onibus: Onibus):
+        self.__onibus = onibus
+
     def imprime(self):
-        print(f"ID: {self.id_viagem}")
-        print(f"Origem: {self.origem}")
-        print(f"Destino: {self.destino}")
-        print(f"Data: {self.data}")
-        print(f"Hora: {self.hora}")
-        print(f"Preço: {self.preco}")
-        print(f"Tipo de Ônibus: {self.tipoOnibus}")
-        print(f"Assentos Disponíveis: {self.assento}")
-        
-    
+        print(f"ID: {self.__id_viagem}")
+        print(f"Origem: {self.__origem}")
+        print(f"Destino: {self.__destino}")
+        print(f"Dias da semana: {self.__dias_da_semana}")
+        print(f"Hora: {self.__hora}")
+        print(f"Preço: {self.__preco}")
+        print(f"Tipo de ônibus: {self.__onibus.get_tipo_onibus()}")
+        print(f"Assentos disponíveis:", {self.__onibus.get_assentos()})
