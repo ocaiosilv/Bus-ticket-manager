@@ -1,5 +1,7 @@
 # As importações continuam as mesmas
-from onibus import Onibus, OnibusExecutivo, OnibusConvencional
+from onibus import Onibus
+from onibus_convencional import OnibusConvencional
+from onibus_executivo import OnibusExecutivo
 from passageiro import Passageiro
 from viagem import Viagem 
 
@@ -11,13 +13,13 @@ class SistemaAdmin:
 
     def cadastrar_viagem(self, origem, destino, dias_da_semana, hora, preco_base, tipo_onibus, modelo, fabricante):
         onibus_obj = None
-        if tipo_onibus.lower() == 'convencional':
+        if tipo_onibus.lower() == 'Convencional':
             onibus_obj = OnibusConvencional(modelo, fabricante, 6, "Ônibus convencional com 48 lugares")
-        elif tipo_onibus.lower() == 'executivo':
+        elif tipo_onibus.lower() == 'Executivo':
             onibus_obj = OnibusExecutivo(modelo, fabricante, 8, "Ônibus executivo de dois andares")
         else:
             return None
-
+        
         nova_viagem = Viagem(self.__proximo_id_viagem, origem, destino, dias_da_semana, hora, preco_base, onibus_obj)
         self.__viagens.append(nova_viagem)
         self.__proximo_id_viagem += 1

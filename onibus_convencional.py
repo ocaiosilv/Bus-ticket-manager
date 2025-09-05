@@ -4,7 +4,7 @@ from assento import Assento
 class OnibusConvencional(Onibus):
     def __init__(self, modelo, fabricante, numrodas, descricao):
         super().__init__(modelo, fabricante, numrodas, descricao, "Convencional")
-        self.assentos = self.gera_assentos()
+        self.__assentos = self.gera_assentos()
 
     def gera_assentos(self):
         lista_assentos = []
@@ -26,7 +26,7 @@ class OnibusConvencional(Onibus):
         # Fazer raise para conferir se o número do assento é compatível
         letra = numero_assento[0]
         indice_letra = ord(letra) - ord('A')
-        numero = numero_assento[1]
+        numero = int(numero_assento[1])
         indice = (indice_letra * 4) + (numero - 1)
         return indice
 

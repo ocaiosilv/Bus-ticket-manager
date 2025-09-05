@@ -18,6 +18,8 @@ class SistemaVendas:
             dados_passageiro['nome'],
             dados_passageiro['idade'],
             dados_passageiro['cpf'],
+            dados_passageiro['email'],
+            dados_passageiro['telefone'],
             dados_passageiro['pcd']
         )
         

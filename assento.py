@@ -22,4 +22,8 @@ class Assento:
     def set_passageiro(self, passageiro):
         self.__passageiro = passageiro
 
+    def imprime(self):
+        print("Numero:",self.__numero)
+        if self.__passageiro:
+            print("Passageiro: ",self.__passageiro)
     
