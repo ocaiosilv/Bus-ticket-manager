@@ -1,6 +1,15 @@
+from Erro_sistema import DadosInvalidosError
+
 class Passageiro:
+<<<<<<< Updated upstream
     #A ideia é pra eh_PCD ser booleano
     def __init__(self,nome,idade,cpf,email,telefone,eh_PCD):
+=======
+    def __init__(self, nome, idade, cpf, email, telefone, eh_PCD):
+        if not isinstance(idade, int) or not (0 <= idade <= 120):
+            raise DadosInvalidosError("Idade inválida. A idade deve ser um número inteiro entre 0 e 120.")
+         
+>>>>>>> Stashed changes
         self.__nome = nome
         self.__idade = idade
         self.__cpf = cpf
